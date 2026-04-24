@@ -7,7 +7,17 @@ This game is in extremely early development and not yet playable.
 
 ## Installation
 
-Installation instructions will be added here upon first release.
+### Requirements
+- Luanti 5.15.0 or higher
+
+### Manual Installation
+1. Download the source code zip from the latest release
+2. Extract the folder inside the zip
+3. Move or copy the extracted folder to your Luanti games directory:
+   - **Windows:** `C:\Users\<yourname>\AppData\Roaming\Minetest\games\`
+   - **Linux:** `~/.minetest/games/`
+   - **macOS:** `~/Library/Application Support/minetest/games/`
+4. Launch Luanti, go to the **Start Game** tab, select the game and create a new world
 
 ## Contributing
 
