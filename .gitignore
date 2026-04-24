@@ -39,3 +39,16 @@ luac.out
 *.x86_64
 *.hex
 
+# OS files
+.DS_Store
+Thumbs.db
+
+# Luanti specific
+*.bak
+minetest.conf
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+.luarc.json
