@@ -45,9 +45,14 @@ Thumbs.db
 
 # Luanti specific
 *.bak
+minetest.conf
 
 # Editor files
 .vscode/
 .idea/
 *.swp
 .luarc.json
+
+# My Notes
+notes.txt
+nodes to add.txt

@@ -1,8 +1,12 @@
 TODO:
 
-- continue tweaking physics, get it feeling better
+- physics are getting better but still need some work. Tweak jump height and both accelerations
 - look into how inventory and ui are done, also think about stack sizes and inventory size
-- look into changing world dimensions, aka not so tall
+- look into changing world dimensions, aka not so tall. Also world save format.
 - think about hp, hunger etc.
 - create a list of basic nodes I know will be in the game and are needed before the alpha
-- split up creative mode and survival mode
+- spawn point logic
+- sound effects
+- game settings
+- make it so you can place blocks inside yourself and if you are inside a block you get pushed out
+- tried to make zoom work but it does not.
