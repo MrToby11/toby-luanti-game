@@ -1,0 +1,8 @@
+TODO:
+
+- continue tweaking physics, get it feeling better
+- look into how inventory and ui are done, also think about stack sizes and inventory size
+- look into changing world dimensions, aka not so tall
+- think about hp, hunger etc.
+- create a list of basic nodes I know will be in the game and are needed before the alpha
+- split up creative mode and survival mode

@@ -45,7 +45,6 @@ Thumbs.db
 
 # Luanti specific
 *.bak
-minetest.conf
 
 # Editor files
 .vscode/
