@@ -5,8 +5,8 @@ local SPRINT_SPEED  = WALK_SPEED * 1.3  -- ~30% faster than walking
 local SNEAK_SPEED   = 1.5
 local JUMP_HEIGHT   = 1.1   -- In blocks
 local GRAVITY       = 1.1
-local GROUND_ACCEL  = 2.0   -- Acceleration while on ground
-local AIR_ACCEL     = 0.9   -- Acceleration while in air
+local GROUND_ACCEL  = 1.5   -- Acceleration while on ground
+local AIR_ACCEL     = 1.0   -- Acceleration while in air
 
 local player_state = {}
 
