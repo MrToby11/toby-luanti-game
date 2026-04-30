@@ -15,6 +15,7 @@ minetest.register_on_joinplayer(function(player)
 
     player_state[name] = {
         sprinting     = false,
+        water_hud     = nil,   -- HUD element id for underwater overlay
     }
     
     player:get_inventory():set_size("main", 32)
@@ -25,22 +26,19 @@ minetest.register_on_leaveplayer(function(player)
     player_state[player:get_player_name()] = nil
 end)
 
-
 minetest.register_globalstep(function(dtime)
     for _, player in ipairs(minetest.get_connected_players()) do
         local name  = player:get_player_name()
         local state = player_state[name]
         if not state then return end
 
-        local ctrl     = player:get_player_control()
+        local ctrl      = player:get_player_control()
 
         local is_sneaking  = ctrl.sneak
         local is_sprinting = ctrl.aux1 and ctrl.up and not is_sneaking
 
-        -- Determines if player is sprinting or walking
         local speed_walk_mult = is_sprinting and SPRINT_SPEED or WALK_SPEED
 
-        -- Overrides player physics
         player:set_physics_override({
             speed_walk           = speed_walk_mult,
             speed_crouch         = SNEAK_SPEED,

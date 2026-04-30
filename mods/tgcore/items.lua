@@ -1,30 +1,56 @@
 -- Item despawn timer
 local ITEM_DESPAWN_TIME = 300  -- 5 minutes
 
-local item_entity = minetest.registered_entities["__builtin:item"]
-if item_entity then
-    local old_on_step = item_entity.on_step
-        item_entity.on_step = function(self, dtime, moveresult)
-            local real_age = self.age or 0
-            self.age = 0  -- prevent engine TTL from firing
-            old_on_step(self, dtime, moveresult)
-            self.age = real_age + dtime  -- restore and increment our own tracker
-            if self.age > ITEM_DESPAWN_TIME then
-                self.object:remove()
-            end
-        end
-end
-
 -- Item drop and pickup system
 local PICKUP_RADIUS = 1.5
 local PLAYER_DROP_PICKUP_DELAY = 2.0  -- seconds before player-dropped items can be picked up
+local LAVA_DESTROY_TIME = 1.0  -- seconds before items in lava are destroyed
 
--- Disable punch-to-pickup on dropped items
 local item_entity = minetest.registered_entities["__builtin:item"]
 if item_entity then
+    local old_on_step = item_entity.on_step
+    item_entity.on_step = function(self, dtime, moveresult)
+        old_on_step(self, dtime, moveresult)
+
+        -- Stop sliding by killing horizontal velocity when on ground
+        if moveresult and moveresult.touching_ground then
+            local vel = self.object:get_velocity()
+            if vel then
+                self.object:set_velocity({
+                    x = vel.x * 0.6,
+                    y = vel.y,
+                    z = vel.z * 0.6,
+                })
+            end
+        end
+        -- Destroy items that land in lava
+        local pos = self.object:get_pos()
+        if pos then
+            local node = minetest.get_node(pos)
+            if node.name == "tgcore:lava_source" or node.name == "tgcore:lava_flowing" then
+                -- Start or increment lava timer
+                self._lava_time = (self._lava_time or 0) + dtime
+                if self._lava_time >= LAVA_DESTROY_TIME then
+                    self.object:remove()
+                    return
+                end
+            else
+                -- Reset timer if item leaves lava
+                self._lava_time = nil
+            end
+        end
+
+        -- Despawn timer
+        self._age = (self._age or 0) + dtime
+        if self._age >= ITEM_DESPAWN_TIME then
+            self.object:remove()
+        end
+    end
+
+    -- disable punch-to-pickup
     local old_on_punch = item_entity.on_punch
     item_entity.on_punch = function(self, hitter)
-        -- do nothing; pickup is handled by walking over items
+        -- do nothing
     end
 end
 
@@ -42,7 +68,6 @@ minetest.handle_node_drops = function(pos, drops, digger)
     end
 end
 
-
 -- Tag freshly spawned item entities near pos as player-dropped
 -- so the pickup system applies a delay before allowing pickup
 local function tag_dropped_items(pos)
@@ -58,11 +83,10 @@ local function tag_dropped_items(pos)
     end)
 end
 
-
 -- Override item drop to support single-item drop (default) and full-stack drop (sneak)
-local original_item_drop = core.item_drop
+local original_item_drop = minetest.item_drop
 
-core.item_drop = function(itemstack, dropper, pos)
+minetest.item_drop = function(itemstack, dropper, pos)
     if dropper and dropper:is_player() then
         local ctrl = dropper:get_player_control()
         if not ctrl.sneak then
@@ -82,7 +106,6 @@ core.item_drop = function(itemstack, dropper, pos)
     end
     return result
 end
-
 
 -- Pickup: walk over items to collect them
 minetest.register_globalstep(function(dtime)

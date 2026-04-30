@@ -1,6 +1,6 @@
 -- Core mod
 
-local modpath = minetest.get_modpath("core")
+local modpath = minetest.get_modpath("tgcore")
 
 dofile(modpath .. "/hand.lua")
 dofile(modpath .. "/nodes.lua")
@@ -9,3 +9,4 @@ dofile(modpath .. "/mapgen.lua")
 dofile(modpath .. "/player.lua")
 dofile(modpath .. "/gamemode.lua")
 dofile(modpath .. "/placement.lua")
+dofile(modpath .. "/abm.lua")
