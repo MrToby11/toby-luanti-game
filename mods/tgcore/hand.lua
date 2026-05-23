@@ -10,6 +10,7 @@ minetest.register_item(":", {
             crumbly = {times={[1]=2.0, [2]=1.0, [3]=0.5}, uses=0, maxlevel=3},
             cracky  = {times={[1]=4.0, [2]=2.0, [3]=1.0}, uses=0, maxlevel=3},
             snappy  = {times={[1]=2.0, [2]=1.0, [3]=0.5}, uses=0, maxlevel=3},
+            choppy  = {times={[1]=4.0, [2]=2.5, [3]=1.5}, uses=0, maxlevel=3},
         },
         damage_groups = {fleshy=1},
     }

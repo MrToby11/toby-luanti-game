@@ -1,12 +1,17 @@
 TODO:
 
-- physics are getting better but still need some work. Tweak jump height and both accelerations
+- take another look at physics, maybe remove
 - look into how inventory and ui are done, also think about stack sizes and inventory size
 - look into changing world dimensions, aka not so tall. Also world save format.
-- think about hp, hunger etc.
-- create a list of basic nodes I know will be in the game and are needed before the alpha
-- spawn point logic
+- think about hp, hunger, drowning etc.
 - sound effects
 - game settings
-- make it so you can place blocks inside yourself and if you are inside a block you get pushed out
-- tried to make zoom work but it does not.
+- make it so if you are inside a block you get pushed out
+- add working beds
+- add more nodes
+- make more pixel art. Next do fabric blocks and basic items.
+- fix sand generating in cave entrances
+- add tools with different block breaking speeds
+- better creative/survival mode implementation
+- add leaf decay
+- add tree regrowing + saplings

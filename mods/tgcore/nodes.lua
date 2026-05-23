@@ -4,7 +4,14 @@ minetest.register_node("tgcore:stone", {
     description = "Stone",
     tiles = {"tgcore_stone.png"},
     groups = {cracky = 3},
-    drop = "tgcore:stone",
+    drop = "tgcore:cobblestone",
+})
+
+minetest.register_node("tgcore:cobblestone", {
+    description = "Cobblestone",
+    tiles = {"tgcore_cobblestone.png"},
+    groups = {cracky = 3},
+    drop = "tgcore:cobblestone",
 })
 
 minetest.register_node("tgcore:dirt", {
@@ -16,9 +23,53 @@ minetest.register_node("tgcore:dirt", {
 
 minetest.register_node("tgcore:dirt_with_grass", {
     description = "Grass Block",
-    tiles = {"tgcore_grass.png", "tgcore_dirt.png", "tgcore_grass_side.png"},
+    tiles = {"tgcore_grass_top.png", "tgcore_dirt.png", "tgcore_grass_side.png"},
     groups = {crumbly = 3},
     drop = "tgcore:dirt",
+})
+
+minetest.register_node("tgcore:gravel", {
+    description = "Gravel",
+    tiles = {"tgcore_gravel.png"},
+    groups = {crumbly = 2, falling_node = 1},
+    drop = "tgcore:gravel",
+})
+
+minetest.register_node("tgcore:sand", {
+    description = "Sand",
+    tiles = {"tgcore_sand.png"},
+    groups = {crumbly = 3, falling_node = 1},     -- as easy to dig as dirt
+    drop = "tgcore:sand",
+})
+
+minetest.register_node("tgcore:wooden_log", {
+    description = "Wooden Log",
+    -- top/bottom face, then side face
+    tiles = {"tgcore_wooden_log_top.png", "tgcore_wooden_log_top.png", "tgcore_wooden_log_side.png"},
+    paramtype2 = "facedir",     -- allows logs to be placed on their side
+    groups = {choppy = 2, flammable = 2},
+    drop = "tgcore:wooden_log",
+    sounds = {},
+})
+ 
+minetest.register_node("tgcore:wooden_planks", {
+    description = "Wooden Planks",
+    tiles = {"tgcore_wooden_planks.png"},
+    groups = {choppy = 2, flammable = 2},
+    drop = "tgcore:wooden_planks",
+    sounds = {},    -- placeholder until you add wood sounds
+})
+
+minetest.register_node("tgcore:leaves", {
+    description = "Leaves",
+    drawtype = "allfaces_optional",  -- renders inner faces, looks better for leaf clusters
+    tiles = {"tgcore_leaves.png"},
+    use_texture_alpha = "clip",      -- hard transparency, no blending artifacts
+    paramtype = "light",             -- lets light pass through
+    waving = 1,                      -- leaves sway in wind if waving is enabled
+    groups = {snappy = 3, flammable = 2, leaves = 1},
+    drop = "",                       -- no drop by default; add shears later for silk touch
+    sounds = {},
 })
 
 minetest.register_node("tgcore:water_source", {
@@ -49,7 +100,7 @@ minetest.register_node("tgcore:water_source", {
     liquid_alternative_flowing = "tgcore:water_flowing",
     liquid_alternative_source  = "tgcore:water_source",
     liquid_range = 7,
-    liquid_viscosity = 3,           -- controls movement resistance and spread speed
+    liquid_viscosity = 1,           -- controls movement resistance and spread speed
     liquid_move_physics = true,     -- enables engine-side swim physics
     drowning = 1,                   -- causes breath loss when submerged
     post_effect_color = {a = 200, r = 30, g = 60, b = 90},
@@ -76,7 +127,7 @@ minetest.register_node("tgcore:water_flowing", {
     liquid_alternative_flowing = "tgcore:water_flowing",
     liquid_alternative_source  = "tgcore:water_source",
     liquid_range = 7,
-    liquid_viscosity = 3,
+    liquid_viscosity = 1,
     liquid_move_physics = true,
     drowning = 1,
     post_effect_color = {a = 200, r = 30, g = 60, b = 90},
