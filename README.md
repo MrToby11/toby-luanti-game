@@ -1,9 +1,13 @@
 # Toby's Luanti Game
 I am building a game from the ground up in Luanti as a personal project for learning and for fun. It will be a block-based survival sandbox game where players can build, mine, and explore the world. As of right now no features are set in stone, I am in early development.
 
+Here is a screenshot showing early world generation working (taken in v0.2.0-dev):
+
+![World generation screenshot](images/screenshot_20260522_223201.png)
+
 ## Status
 
-This game is in extremely early development and not yet playable.
+This game is in extremely early development. Game is playable but not very fun.
 
 ## Installation
 
