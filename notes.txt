@@ -1,0 +1,17 @@
+TODO:
+
+- take another look at physics, maybe remove
+- look into how inventory and ui are done, also think about stack sizes and inventory size
+- look into changing world dimensions, aka not so tall. Also world save format.
+- think about hp, hunger, drowning etc.
+- sound effects
+- game settings
+- make it so if you are inside a block you get pushed out
+- add working beds
+- add more nodes
+- make more pixel art. Next do fabric blocks and basic items.
+- fix sand generating in cave entrances
+- add tools with different block breaking speeds
+- better creative/survival mode implementation
+- add leaf decay
+- add tree regrowing + saplings
